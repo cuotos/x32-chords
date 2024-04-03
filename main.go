@@ -8,9 +8,16 @@ import (
 	"slices"
 	"text/template"
 
-	"github.com/go-music-theory/music-theory/chord"
 	"golang.org/x/exp/maps"
+	"gopkg.in/music-theory.v0/chord"
 	"gopkg.in/music-theory.v0/note"
+
+	_ "embed"
+)
+
+var (
+	//go:embed snippet.snp.tmpl
+	snippetTemplate string
 )
 
 type Model struct {
@@ -101,7 +108,7 @@ func tonesAsIntervals(tones map[chord.Interval]note.Class) [6]int {
 }
 
 func renderTemplate(model Model) ([]byte, error) {
-	tmpl := template.Must(template.ParseFiles("snippet.snp.tmpl"))
+	tmpl := template.Must(template.New("snippet").Parse(snippetTemplate))
 
 	buf := bytes.NewBuffer([]byte{})
 

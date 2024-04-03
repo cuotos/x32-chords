@@ -3,8 +3,8 @@ package main
 import (
 	"testing"
 
-	"github.com/go-music-theory/music-theory/chord"
 	"github.com/stretchr/testify/assert"
+	"gopkg.in/music-theory.v0/chord"
 	"gopkg.in/music-theory.v0/note"
 	"gopkg.in/stretchr/testify.v1/require"
 )
