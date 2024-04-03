@@ -19,3 +19,6 @@ create an output directory `output/`
   go run . <list of chords>
   go run . C F G Am Bb7
 ```
+
+# Pregenerated files
+`pregenerated/` contains a load of pre generated files.

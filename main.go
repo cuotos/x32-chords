@@ -38,6 +38,7 @@ type Model struct {
 }
 
 func NewModel(name string, intervals [6]int) Model {
+	// lowest the pitch shift goes, and all other notes are intervals above this
 	baseNote := -12
 
 	m := Model{
@@ -94,6 +95,8 @@ func main() {
 	}
 }
 
+// Interval = I, III, V
+// note.Class is the semitones from the root
 func tonesAsIntervals(tones map[chord.Interval]note.Class) [6]int {
 
 	intervals := [6]int{}
