@@ -9,6 +9,7 @@ import (
 	"text/template"
 
 	"github.com/go-music-theory/music-theory/chord"
+	"golang.org/x/exp/maps"
 	"gopkg.in/music-theory.v0/note"
 )
 
@@ -25,29 +26,44 @@ type Model struct {
 	Pitch4State bool
 }
 
-func NewModel(name string, intervals []int) Model {
+func NewModel(name string, intervals [4]int) Model {
 	baseNote := -12
-	return Model{
-		Name:   name,
-		Pitch1: baseNote + intervals[0],
-		Pitch2: baseNote + intervals[1],
-		Pitch3: baseNote + intervals[2],
 
+	m := Model{
+		Name:        name,
+		Pitch1:      baseNote + intervals[0],
 		Pitch1State: true,
-		Pitch2State: true,
-		Pitch3State: true,
 	}
+
+	if intervals[1] > 0 {
+		m.Pitch2 = baseNote + intervals[1]
+		m.Pitch2State = true
+	}
+
+	if intervals[2] > 0 {
+		m.Pitch3 = baseNote + intervals[2]
+		m.Pitch3State = true
+	}
+
+	if intervals[3] > 0 {
+		m.Pitch4 = baseNote + intervals[3]
+		m.Pitch4State = true
+	}
+
+	return m
 }
 
 func main() {
 
 	chords := []string{
-		"C", "G", "Am", "F",
+		"C", "Cmin", "C7", "Cmaj7",
 	}
 
 	for _, requiredChord := range chords {
 		c := chord.Of(requiredChord)
 		m := NewModel(requiredChord, tonesAsIntervals(c.Tones))
+
+		fmt.Println(m)
 
 		output, err := renderTemplate(m)
 		if err != nil {
@@ -62,13 +78,16 @@ func main() {
 	}
 }
 
-func tonesAsIntervals(tones map[chord.Interval]note.Class) []int {
-	intervals := []int{}
-	for _, v := range tones {
-		intervals = append(intervals, int(v)-1)
-	}
+func tonesAsIntervals(tones map[chord.Interval]note.Class) [4]int {
 
-	slices.Sort(intervals)
+	intervals := [4]int{}
+
+	intervalsFromTones := maps.Keys(tones)
+	slices.Sort(intervalsFromTones)
+
+	for i, inter := range intervalsFromTones {
+		intervals[i] = int(tones[inter]) - 1
+	}
 
 	return intervals
 }

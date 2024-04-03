@@ -66,6 +66,26 @@ func TestAmChord(t *testing.T) {
 	assert.Equal(t, expected, actual)
 }
 
+func TestCmaj7Chord(t *testing.T) {
+	expected := Model{
+		Name:        "Cmaj7",
+		Pitch1:      -12,
+		Pitch2:      -8,
+		Pitch3:      -5,
+		Pitch4:      -1,
+		Pitch1State: true,
+		Pitch2State: true,
+		Pitch3State: true,
+		Pitch4State: true,
+	}
+
+	c := chord.Of("Cmaj7")
+
+	actual := NewModel("Cmaj7", tonesAsIntervals(c.Tones))
+
+	assert.Equal(t, expected, actual)
+}
+
 func TestRenderTemplateC(t *testing.T) {
 	expected := `#4.0# "T" 123008 -1 0 0 1                                                                                                      
 /fx/1 PIT2
