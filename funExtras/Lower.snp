@@ -1,0 +1,45 @@
+#4.0# "Lower" 122898 65535 0 0 1                                                                                               
+/fx/1 PIT2
+/fx/1/source INS INS
+/fx/1/par -12 0 5.0 100 -100 100 -10 0 6.9 100 100 15k8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+/fx/2 PIT2
+/fx/2/source INS INS
+/fx/2/par -8 0 5.0 100 -100 100 -7 0 6.9 100 100 15k8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+/fx/3 PIT2
+/fx/3/source INS INS
+/fx/3/par -5 0 5.0 100 -100 100 -3 0 6.9 100 100 15k8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+/fx/4 PIT2
+/fx/4/source INS INS
+/fx/4/par -1 0 5.0 100 -100 100 0 0 6.9 100 100 15k8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+/ch/01/config "C" 1 GN 1
+/ch/01/insert ON POST FX1L
+/ch/02/config "D" 1 GN 1
+/ch/02/insert ON POST FX1R
+/ch/03/config "E" 1 GN 1
+/ch/03/insert ON POST FX2L
+/ch/04/config "F" 1 GN 1
+/ch/04/insert ON POST FX2R
+/ch/05/config "G" 1 GN 1
+/ch/05/insert ON POST FX3L
+/ch/06/config "A" 1 GN 1
+/ch/06/insert ON POST FX3R
+/ch/07/config "B" 1 GN 1
+/ch/07/insert ON POST FX4L
+/ch/08/config "C" 1 GN 1
+/ch/08/insert ON POST FX4R
+/ch/09/config "D" 1 RD 1
+/ch/09/insert OFF POST OFF
+/ch/10/config "E" 1 RD 1
+/ch/10/insert OFF POST OFF
+/ch/11/config "F" 1 RD 1
+/ch/11/insert OFF POST OFF
+/ch/12/config "G" 1 RD 1
+/ch/12/insert OFF POST OFF
+/ch/13/config "A" 1 RD 1
+/ch/13/insert OFF POST OFF
+/ch/14/config "B" 1 RD 1
+/ch/14/insert OFF POST OFF
+/ch/15/config "C" 1 RD 1
+/ch/15/insert OFF POST OFF
+/ch/16/config "" 1 OFF 16
+/ch/16/insert OFF POST OFF

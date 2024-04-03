@@ -54,12 +54,23 @@ func NewModel(name string, intervals [4]int) Model {
 }
 
 func main() {
+	// chords := []string{
+	// 	"C", "G", "Am", "F",
+	// 	// "A", "Am",
+	// 	// "Bb", "Bbm",
+	// 	// "B", "Bm",
+	// 	// "C", "Cm",
+	// 	// "Db", "Dbm",
+	// 	// "D", "Dm",
+	// 	// "Eb", "Ebm",
+	// 	// "E", "Em",
+	// 	// "F", "Fm",
+	// 	// "Gb", "Gbm",
+	// 	// "G", "Gm",
+	// 	// "Ab", "Abm",
+	// }
 
-	chords := []string{
-		"C", "Cmin", "C7", "Cmaj7",
-	}
-
-	for _, requiredChord := range chords {
+	for _, requiredChord := range os.Args[1:] {
 		c := chord.Of(requiredChord)
 		m := NewModel(requiredChord, tonesAsIntervals(c.Tones))
 
@@ -74,7 +85,6 @@ func main() {
 		if err != nil {
 			log.Fatal(err)
 		}
-
 	}
 }
 
@@ -82,13 +92,12 @@ func tonesAsIntervals(tones map[chord.Interval]note.Class) [4]int {
 
 	intervals := [4]int{}
 
-	intervalsFromTones := maps.Keys(tones)
-	slices.Sort(intervalsFromTones)
+	values := maps.Values(tones)
+	slices.Sort(values)
 
-	for i, inter := range intervalsFromTones {
-		intervals[i] = int(tones[inter]) - 1
+	for i, v := range values {
+		intervals[i] = int(v) - 1
 	}
-
 	return intervals
 }
 

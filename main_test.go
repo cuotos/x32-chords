@@ -127,3 +127,12 @@ func TestRenderTemplateC(t *testing.T) {
 
 	assert.Equal(t, expected, string(actual))
 }
+
+func TestTonesAsIntervals(t *testing.T) {
+
+	input := chord.Of("Am7")
+	actual := tonesAsIntervals(input.Tones)
+	expected := [4]int{0, 4, 7, 9}
+	assert.Equal(t, expected, actual)
+
+}
