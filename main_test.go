@@ -87,7 +87,7 @@ func TestCmaj7Chord(t *testing.T) {
 }
 
 func TestRenderTemplateC(t *testing.T) {
-	expected := `#4.0# "T" 123008 -1 0 0 1                                                                                                      
+	expected := `#4.0# "T" 123008 255 0 0 1                                                                                                      
 /fx/1 PIT2
 /fx/1/source INS INS
 /fx/1/par -12 0 5.0 100 -100 100 -8 0 6.9 100 100 15k8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
@@ -100,15 +100,18 @@ func TestRenderTemplateC(t *testing.T) {
 /fx/4 PIT2
 /fx/4/source INS INS
 /fx/4/par 0 0 5.0 100 -100 100 0 0 6.9 100 100 15k8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+/ch/01/insert ON POST FX1L
 /ch/01/mix/on ON
+/ch/02/insert ON POST FX1R
 /ch/02/mix/on ON
+/ch/03/insert ON POST FX2L
 /ch/03/mix/on OFF
+/ch/04/insert ON POST FX2R
 /ch/04/mix/on OFF
+/ch/05/insert ON POST FX3L
 /ch/05/mix/on OFF
-/ch/06/mix/on OFF
-/ch/07/mix/on OFF
-/ch/08/mix/on OFF
-`
+/ch/06/insert ON POST FX3R
+/ch/06/mix/on OFF`
 
 	m := Model{
 		Name:        "T",
@@ -132,7 +135,7 @@ func TestTonesAsIntervals(t *testing.T) {
 
 	input := chord.Of("Am7")
 	actual := tonesAsIntervals(input.Tones)
-	expected := [4]int{0, 4, 7, 9}
+	expected := [6]int{0, 4, 7, 9, 0, 0}
 	assert.Equal(t, expected, actual)
 
 }

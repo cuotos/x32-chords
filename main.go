@@ -19,14 +19,18 @@ type Model struct {
 	Pitch2 int
 	Pitch3 int
 	Pitch4 int
+	Pitch5 int
+	Pitch6 int
 
 	Pitch1State bool
 	Pitch2State bool
 	Pitch3State bool
 	Pitch4State bool
+	Pitch5State bool
+	Pitch6State bool
 }
 
-func NewModel(name string, intervals [4]int) Model {
+func NewModel(name string, intervals [6]int) Model {
 	baseNote := -12
 
 	m := Model{
@@ -50,28 +54,23 @@ func NewModel(name string, intervals [4]int) Model {
 		m.Pitch4State = true
 	}
 
+	if intervals[4] > 0 {
+		m.Pitch5 = baseNote + intervals[4]
+		m.Pitch5State = true
+	}
+
+	if intervals[5] > 0 {
+		m.Pitch6 = baseNote + intervals[5]
+		m.Pitch6State = true
+	}
+
 	return m
 }
 
 func main() {
-	// chords := []string{
-	// 	"C", "G", "Am", "F",
-	// 	// "A", "Am",
-	// 	// "Bb", "Bbm",
-	// 	// "B", "Bm",
-	// 	// "C", "Cm",
-	// 	// "Db", "Dbm",
-	// 	// "D", "Dm",
-	// 	// "Eb", "Ebm",
-	// 	// "E", "Em",
-	// 	// "F", "Fm",
-	// 	// "Gb", "Gbm",
-	// 	// "G", "Gm",
-	// 	// "Ab", "Abm",
-	// }
-
 	for _, requiredChord := range os.Args[1:] {
 		c := chord.Of(requiredChord)
+		fmt.Println(c)
 		m := NewModel(requiredChord, tonesAsIntervals(c.Tones))
 
 		fmt.Println(m)
@@ -88,9 +87,9 @@ func main() {
 	}
 }
 
-func tonesAsIntervals(tones map[chord.Interval]note.Class) [4]int {
+func tonesAsIntervals(tones map[chord.Interval]note.Class) [6]int {
 
-	intervals := [4]int{}
+	intervals := [6]int{}
 
 	values := maps.Values(tones)
 	slices.Sort(values)

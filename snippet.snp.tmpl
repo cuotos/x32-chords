@@ -7,7 +7,7 @@
 /fx/2/par {{ .Pitch3 }} 0 5.0 100 -100 100 {{ .Pitch4 }} 0 6.9 100 100 15k8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 /fx/3 PIT2
 /fx/3/source INS INS
-/fx/3/par 0 0 5.0 100 -100 100 0 0 6.9 100 100 15k8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+/fx/3/par {{ .Pitch5 }} 0 5.0 100 -100 100 {{ .Pitch6 }} 0 6.9 100 100 15k8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 /fx/4 PIT2
 /fx/4/source INS INS
 /fx/4/par 0 0 5.0 100 -100 100 0 0 6.9 100 100 15k8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
@@ -19,3 +19,7 @@
 /ch/03/mix/on {{if .Pitch3State }}ON{{ else }}OFF{{ end}}
 /ch/04/insert ON POST FX2R
 /ch/04/mix/on {{if .Pitch4State }}ON{{ else }}OFF{{ end}}
+/ch/05/insert ON POST FX3L
+/ch/05/mix/on {{if .Pitch5State }}ON{{ else }}OFF{{ end}}
+/ch/06/insert ON POST FX3R
+/ch/06/mix/on {{if .Pitch6State }}ON{{ else }}OFF{{ end}}
